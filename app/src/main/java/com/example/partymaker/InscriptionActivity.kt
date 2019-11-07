@@ -1,5 +1,6 @@
 package com.example.partymaker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_inscription.*
@@ -12,6 +13,10 @@ class InscriptionActivity : AppCompatActivity() {
 
         button_inscriptionAnnuler.setOnClickListener {
             finish()
+        }
+        button_inscriptionConfirm.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

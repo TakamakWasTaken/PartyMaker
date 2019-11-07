@@ -35,6 +35,7 @@ class EvenementListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_evenement_list)
 
+
         setSupportActionBar(toolbar)
         toolbar.title = title
 
@@ -60,7 +61,7 @@ class EvenementListActivity : AppCompatActivity() {
 
     class SimpleItemRecyclerViewAdapter(
         private val parentActivity: EvenementListActivity,
-        private val values: List<DummyContent.DummyItem>,
+        private val values: List<DummyContent.EvenementItem>,
         private val twoPane: Boolean
     ) :
         RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
@@ -69,7 +70,7 @@ class EvenementListActivity : AppCompatActivity() {
 
         init {
             onClickListener = View.OnClickListener { v ->
-                val item = v.tag as DummyContent.DummyItem
+                val item = v.tag as DummyContent.EvenementItem
                 if (twoPane) {
                     val fragment = EvenementDetailFragment().apply {
                         arguments = Bundle().apply {

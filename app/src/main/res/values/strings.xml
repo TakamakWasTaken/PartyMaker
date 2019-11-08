@@ -6,14 +6,11 @@
     <string name="navigation_drawer_open">Ouvrir le menu</string>
     <string name="navigation_drawer_close">Fermer le menu</string>
     <string name="nav_header_title">PartyMaker</string>
-    <string name="nav_header_subtitle">Menu</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Paramètres</string>
 
     <string name="menu_home">Liste des évènements</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_gallery">Créer un évènement</string>
+    <string name="menu_slideshow">Salon de discussion</string>
+    <string name="menu_tools">Mon compte</string>
 </resources>

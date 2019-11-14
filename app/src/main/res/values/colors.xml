@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF9000</color>
-    <color name="colorPrimaryDark">#DB3D00</color>
-    <color name="colorAccent">#9B1900</color>
-    <color name="colorValidate">#46A00D</color>
-    <color name="colorErreur">#BB0202</color>
+    <color name="colorPrimary">#E47500</color>
+    <color name="colorPrimaryDark">#DA7100</color>
+    <color name="colorAccent">#E47500</color>
+    <color name="colorValidate">#8AFF5E</color>
+    <color name="colorErreur">#FF4A47</color>
+    <color name="colorWhite">#FAFAFA</color>
 </resources>

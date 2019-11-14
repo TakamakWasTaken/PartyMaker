@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_inscriptionTitle" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/input_inscriptionMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,7 +47,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/input_inscriptionMail" />
 
     <EditText
         android:id="@+id/input_inscriptionNom"
@@ -60,35 +60,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_inscriptionNom" />
 
     <TextView
-        android:id="@+id/tv_inscriptionPrenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prénom"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_inscriptionNom" />
-
-    <EditText
-        android:id="@+id/input_inscriptionPrenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_inscriptionPrenom" />
-
-    <TextView
         android:id="@+id/tv_inscriptionPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Mot de passe"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_inscriptionPrenom" />
+        app:layout_constraintTop_toBottomOf="@+id/input_inscriptionNom" />
 
     <EditText
         android:id="@+id/input_inscriptionPass"

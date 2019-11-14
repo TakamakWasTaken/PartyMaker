@@ -22,7 +22,7 @@ class ListEventsFragment : Fragment() {
         listEventsViewModel =
             ViewModelProviders.of(this).get(ListEventsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_list_events, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
+        val textView: TextView = root.findViewById(R.id.text_list_events)
         listEventsViewModel.text.observe(this, Observer {
             textView.text = it
         })

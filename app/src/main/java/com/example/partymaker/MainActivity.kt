@@ -11,45 +11,84 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseUser
 
 
 class MainActivity : MenuActivity() {
-
     private var mAuth: FirebaseAuth? = null
+    var fbAuth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance()
 
+        //récupération de l'instance FireBase
+        mAuth = FirebaseAuth.getInstance()
+        button_connect.setOnClickListener {view ->
+            var mail = input_connectMail.text.toString()
+            var pass = input_connectPass.text.toString()
+            if(checkUserCredentials(mail, pass)){
+                signIn(view, mail, pass)
+            }
+        }
+
+        //DELETE THIS BUTTON BEFORE PROD, for dev purpose only.
+        button_fastConnect.setOnClickListener{
+            input_connectMail.setText("gau@y.co")
+            input_connectPass.setText("testeur")
+        }
     }
 
+    public override fun onStart() {
+        super.onStart()
+        // Check si le user est connecté (non-null) & update interface.
+        val currentUser = mAuth!!.getCurrentUser()
+        updateUI(currentUser)
+    }
+
+    //mise à jour de l'interface selon les infos de l'utilisateur
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            input_connectMail.setText(user.email)
+        } else {
+            toast("Bienvenue sur PartyMaker")
+        }
+    }
+
+    //fonction connexion
+    fun signIn(view: View,email: String, password: String){
+        fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
+            if(task.isSuccessful){
+                toast("Authentification réussie!")
+                var intent = Intent(this, MenuActivity::class.java)
+                intent.putExtra("id", fbAuth.currentUser?.email)
+                startActivity(intent)
+            }else{
+                toast("Erreur de connexion")
+                //showMessage(view,"Error: ${task.exception?.message}")
+            }
+        })
+    }
+
+    fun showMessage(view:View, message: String){
+        Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE).setAction("Action", null).show()
+    }
+
+    //lancement de l'activité inscription
     fun startInscription(view: View){
         val intentionInscription = Intent(this, InscriptionActivity::class.java)
         startActivity(intentionInscription)
     }
 
-    //Check user identifiers, if tokens are matching connect him and start eventListActivity. If tokens are wrong, inform user and stay put.
-    fun connect(view: View){
-        val email = input_connectMail.text.toString()
-        val pass = input_connectPass.text.toString()
-
-
-        if(checkUserCredentials(email, pass)){
-            val intentionConnection = Intent(this, EvenementListActivity::class.java)
-            intentionConnection.putExtra("connectedUserMail", email)
-            intentionConnection.putExtra("connectedUserPass", pass)
-
-            startActivity(intentionConnection)
-        }
-    }
-
+    //Never Trust User Entry
     private fun checkUserCredentials(email: String, pass: String): Boolean{
         var connect = false
 
-        if(pass.length > 3 && isEmailValid(email)){
+        if(pass.length > 5 && isEmailValid(email)){
             connect = true
         }
         else{
@@ -59,6 +98,7 @@ class MainActivity : MenuActivity() {
         return connect
     }
 
+    //Fonction de vérification automatique de la validité de l'email.
     private fun isEmailValid(email: CharSequence): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }

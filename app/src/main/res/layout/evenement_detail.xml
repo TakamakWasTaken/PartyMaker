@@ -3,66 +3,108 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/evenement_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context=".EvenementDetailFragment" />
 
-<ScrollView
-android:layout_width="409dp"
-android:layout_height="353dp">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
     <TextView
-        android:id="@+id/members_title"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/tv_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"
-        android:text="Liste des participants"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:layout_marginTop="16dp"
+        android:text="Description"
+        android:textSize="20sp"
+        android:textColor="#747474"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:context=".EvenementDetailFragment" />
+    <TextView
+        android:id="@+id/evenement_detail"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:padding="16dp"
+        android:textIsSelectable="true"/>
 
     <TextView
-        android:id="@+id/evenement_member1"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="32dp"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Date"
+        android:textSize="20sp"
+        android:textColor="#747474"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <TextView
-        android:id="@+id/evenement_member2"
+        android:id="@+id/evenement_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-    <TextView
-        android:id="@+id/evenement_member3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="32dp"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-    <TextView
-        android:id="@+id/evenement_member4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="32dp"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-</LinearLayout>
-</ScrollView>
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="353dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/members_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:text="Liste des participants"
+                android:textSize="20sp"
+                android:textColor="#747474"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/evenement_member1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/evenement_member2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/evenement_member3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/evenement_member4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
 

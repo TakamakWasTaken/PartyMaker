@@ -1,5 +1,6 @@
 package com.example.partymaker.dummy
 
+import com.example.partymaker.Models.EvenementsModel
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -14,12 +15,12 @@ object DummyContent {
     /**
      * An array of sample (dummy) items.
      */
-    val ITEMS: MutableList<EvenementItem> = ArrayList()
+    val ITEMS: MutableList<EvenementsModel> = ArrayList()
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, EvenementItem> = HashMap()
+    val ITEM_MAP: MutableMap<String, EvenementsModel> = HashMap()
 
     private val COUNT = 3
 
@@ -41,18 +42,18 @@ object DummyContent {
         addItem(createDummyItem("2", "Crémaillère", "02/06/2020", "L'emménagement de Louis et Mat' est terminé", membres2))
     }
 
-    private fun addItem(item: EvenementItem) {
+    fun addItem(item: EvenementsModel) {
         ITEMS.add(item)
         ITEM_MAP.put(item.id, item)
     }
 
-    private fun createDummyItem(position: Int): EvenementItem {
+    /*private fun createDummyItem(position: Int): EvenementsModel {
 
-        return EvenementItem(position.toString(), "Item " + position, makeDetails(position), "dd/MM/yy", ArrayList<String>())
-    }
-    private fun createDummyItem(id: String, name: String, date: String, details: String, members: ArrayList<String>): EvenementItem {
+        return EvenementsModel(position.toString(), "Item " + position, makeDetails(position), "dd/MM/yy", ArrayList<String>())
+    }*/
+    private fun createDummyItem(id: String, name: String, date: String, details: String, members: ArrayList<String>): EvenementsModel {
 
-        return EvenementItem(id, name, details, date, members)
+        return EvenementsModel(id, name, date, details, members)
     }
 
     private fun makeDetails(position: Int): String {

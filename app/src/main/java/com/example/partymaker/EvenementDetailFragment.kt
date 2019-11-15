@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.partymaker.Models.EvenementsModel
 import com.example.partymaker.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_evenement_detail.*
 import kotlinx.android.synthetic.main.evenement_detail.view.*
@@ -20,7 +21,7 @@ class EvenementDetailFragment : Fragment() {
     /**
      * The dummy content this fragment is presenting.
      */
-    private var item: DummyContent.EvenementItem? = null
+    private var item: EvenementsModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class EvenementDetailFragment : Fragment() {
                 // arguments. In a real-world scenario, use a Loader
                 // to load content from a content provider.
                 item = DummyContent.ITEM_MAP[it.getString(ARG_ITEM_ID)]
-                activity?.toolbar_layout?.title = item?.name
+                activity?.toolbar_layout?.title = item?.nom
             }
         }
     }
@@ -45,9 +46,13 @@ class EvenementDetailFragment : Fragment() {
         // Show the dummy content as text in a TextView.
         item?.let {
             rootView.evenement_detail.text = it.details
-            rootView.evenement_member1.text = it.members[0]
-            rootView.evenement_member2.text = it.members[1]
-            rootView.evenement_member3.text = it.members[2]
+            rootView.evenement_date.text = it.date
+            if(it.participants.size > 0){
+
+                rootView.evenement_member1.text = it.participants[0]
+                rootView.evenement_member2.text = it.participants[1]
+                rootView.evenement_member3.text = it.participants[2]
+            }
         }
 
         return rootView

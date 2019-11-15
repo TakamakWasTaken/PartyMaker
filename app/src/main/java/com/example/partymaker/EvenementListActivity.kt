@@ -15,16 +15,12 @@ import com.example.partymaker.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_evenement_list.*
 import kotlinx.android.synthetic.main.evenement_list_content.view.*
 import kotlinx.android.synthetic.main.evenement_list.*
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import android.util.Log
+import com.example.partymaker.Models.EvenementsModel
 
 
 /**
@@ -54,7 +50,7 @@ class EvenementListActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        button_createEvent.setOnClickListener { view ->
+        button_createEvent.setOnClickListener {
             val intent = Intent(this, CreateEventActivity::class.java)
             startActivity(intent)
         }
@@ -65,11 +61,11 @@ class EvenementListActivity : AppCompatActivity() {
             twoPane = true
         }
 
-
         setupRecyclerView(evenement_list)
         dbConnect()
     }
 
+    //connection à la BDD FireBase
     private fun dbConnect(){
 
         // Write a message to the database
@@ -92,9 +88,9 @@ class EvenementListActivity : AppCompatActivity() {
             }
         })
         val myEvents = database.getReference("evenements")
-        myRef.setValue("Hello, World!")
+        myEvents.setValue("Hello, World!")
 
-        myRef.addValueEventListener(object : ValueEventListener {
+        myEvents.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
@@ -113,9 +109,10 @@ class EvenementListActivity : AppCompatActivity() {
         recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
     }
 
+    //classe recycler view
     class SimpleItemRecyclerViewAdapter(
         private val parentActivity: EvenementListActivity,
-        private val values: List<DummyContent.EvenementItem>,
+        private val values: List<EvenementsModel>,
         private val twoPane: Boolean
     ) :
         RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
@@ -124,7 +121,7 @@ class EvenementListActivity : AppCompatActivity() {
 
         init {
             onClickListener = View.OnClickListener { v ->
-                val item = v.tag as DummyContent.EvenementItem
+                val item = v.tag as EvenementsModel
                 if (twoPane) {
                     val fragment = EvenementDetailFragment().apply {
                         arguments = Bundle().apply {
@@ -144,15 +141,17 @@ class EvenementListActivity : AppCompatActivity() {
             }
         }
 
+        //création de la vue
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.evenement_list_content, parent, false)
             return ViewHolder(view)
         }
 
+        //binding de la view
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = values[position]
-            holder.contentView.text = item.name
+            holder.contentView.text = item.nom
 
             with(holder.itemView) {
                 tag = item
@@ -163,7 +162,7 @@ class EvenementListActivity : AppCompatActivity() {
         override fun getItemCount() = values.size
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val contentView: TextView = view.content
+            val contentView: TextView = view.tv_eventName
         }
     }
 }

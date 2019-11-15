@@ -31,7 +31,7 @@ class EvenementDetailFragment : Fragment() {
                 // arguments. In a real-world scenario, use a Loader
                 // to load content from a content provider.
                 item = DummyContent.ITEM_MAP[it.getString(ARG_ITEM_ID)]
-                activity?.toolbar_layout?.title = item?.content
+                activity?.toolbar_layout?.title = item?.name
             }
         }
     }
@@ -45,6 +45,9 @@ class EvenementDetailFragment : Fragment() {
         // Show the dummy content as text in a TextView.
         item?.let {
             rootView.evenement_detail.text = it.details
+            rootView.evenement_member1.text = it.members[0]
+            rootView.evenement_member2.text = it.members[1]
+            rootView.evenement_member3.text = it.members[2]
         }
 
         return rootView

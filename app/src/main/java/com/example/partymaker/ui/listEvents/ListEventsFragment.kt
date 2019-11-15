@@ -14,6 +14,7 @@ class ListEventsFragment : Fragment() {
 
     private lateinit var listEventsViewModel: ListEventsViewModel
 
+    //adding  view
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

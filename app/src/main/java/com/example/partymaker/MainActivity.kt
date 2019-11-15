@@ -11,6 +11,7 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
@@ -64,12 +65,13 @@ class MainActivity : MenuActivity() {
         fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
             if(task.isSuccessful){
                 toast("Authentification réussie!")
-                var intent = Intent(this, MenuActivity::class.java)
+                var intent = Intent(this, EvenementListActivity::class.java)
                 intent.putExtra("id", fbAuth.currentUser?.email)
                 startActivity(intent)
             }else{
                 toast("Erreur de connexion")
-                //showMessage(view,"Error: ${task.exception?.message}")
+                //Log.w("xxxERRORxxx", "createUserWithEmail:failure", task.exception)
+               // showMessage(view,"Error: ${task.exception?.message}")
             }
         })
     }

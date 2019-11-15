@@ -9,11 +9,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.ui.AppBarConfiguration
 
 import com.example.partymaker.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_evenement_list.*
 import kotlinx.android.synthetic.main.evenement_list_content.view.*
 import kotlinx.android.synthetic.main.evenement_list.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ValueEventListener
+import android.util.Log
+
 
 /**
  * An activity representing a list of Pings. This activity
@@ -29,28 +41,72 @@ class EvenementListActivity : AppCompatActivity() {
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
+
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private var twoPane: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_evenement_list)
 
-
-
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
 
+        button_createEvent.setOnClickListener { view ->
+            val intent = Intent(this, CreateEventActivity::class.java)
+            startActivity(intent)
+        }
+
         if (evenement_detail_container != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
+            // The detail container view will be present only in the large-screen layouts (res/values-w900dp).
+            // If this view is present, then the activity should be in two-pane mode.
             twoPane = true
         }
 
+
         setupRecyclerView(evenement_list)
+        dbConnect()
+    }
+
+    private fun dbConnect(){
+
+        // Write a message to the database
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("message")
+
+        myRef.setValue("Hello, World!")
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue(String::class.java)
+                Log.d("xxVALxx", "Value is: " + value!!)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("xxFAILVALxx", "Failed to read value.", error.toException())
+            }
+        })
+        val myEvents = database.getReference("evenements")
+        myRef.setValue("Hello, World!")
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue(String::class.java)
+                Log.d("xxVALxx", "Value is: " + value!!)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("xxFAILVALxx", "Failed to read value.", error.toException())
+            }
+        })
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
@@ -96,8 +152,7 @@ class EvenementListActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = values[position]
-            holder.idView.text = item.id
-            holder.contentView.text = item.content
+            holder.contentView.text = item.name
 
             with(holder.itemView) {
                 tag = item
@@ -108,7 +163,6 @@ class EvenementListActivity : AppCompatActivity() {
         override fun getItemCount() = values.size
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val idView: TextView = view.id_text
             val contentView: TextView = view.content
         }
     }

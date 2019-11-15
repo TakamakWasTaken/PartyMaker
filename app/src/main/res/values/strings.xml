@@ -3,6 +3,7 @@
     <string name="title_evenement_detail">Détails de l\'évènement</string>
     <string name="title_evenement_list">Vos évènements</string>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_create_event">Créer un évènement</string>
     <string name="navigation_drawer_open">Ouvrir le menu</string>
     <string name="navigation_drawer_close">Fermer le menu</string>
     <string name="nav_header_title">PartyMaker</string>

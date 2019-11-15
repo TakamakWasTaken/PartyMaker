@@ -12,14 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CreateEventActivity"
+            android:label="@string/title_create_event" >
+
+        </activity>
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".EvenementListActivity"
-            android:label="@string/title_evenement_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_evenement_list" />
         <activity
             android:name=".EvenementDetailActivity"
             android:label="@string/title_evenement_detail"

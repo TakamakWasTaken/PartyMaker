@@ -47,6 +47,14 @@
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+    <Button
+        android:id="@+id/button_reminder"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:text="Envoyer un rappel" />
+
     <ScrollView
         android:layout_width="409dp"
         android:layout_height="353dp">
@@ -71,7 +79,7 @@
                 android:id="@+id/evenement_member1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -80,7 +88,7 @@
                 android:id="@+id/evenement_member2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -89,7 +97,7 @@
                 android:id="@+id/evenement_member3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -98,7 +106,7 @@
                 android:id="@+id/evenement_member4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />

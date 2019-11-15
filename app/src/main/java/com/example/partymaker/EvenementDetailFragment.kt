@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.media.app.NotificationCompat
 import com.example.partymaker.Models.EvenementsModel
 import com.example.partymaker.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_evenement_detail.*
+import kotlinx.android.synthetic.main.evenement_detail.*
 import kotlinx.android.synthetic.main.evenement_detail.view.*
+
+
 
 /**
  * A fragment representing a single Evenement detail screen.
@@ -18,9 +22,7 @@ import kotlinx.android.synthetic.main.evenement_detail.view.*
  */
 class EvenementDetailFragment : Fragment() {
 
-    /**
-     * The dummy content this fragment is presenting.
-     */
+    //l'évènement cliqué par l'utilisateur sera stocké dans cette variable
     private var item: EvenementsModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,15 +56,11 @@ class EvenementDetailFragment : Fragment() {
                 rootView.evenement_member3.text = it.participants[2]
             }
         }
-
         return rootView
     }
 
     companion object {
-        /**
-         * The fragment argument representing the item ID that this fragment
-         * represents.
-         */
+        //The fragment argument representing the item ID that this fragment represents.
         const val ARG_ITEM_ID = "item_id"
     }
 }

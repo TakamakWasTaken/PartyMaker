@@ -62,10 +62,10 @@ class EvenementListActivity : AppCompatActivity() {
         }
 
         setupRecyclerView(evenement_list)
-        dbConnect()
+        //dbConnect()
     }
 
-    //connection à la BDD FireBase
+    //test connection à la BDD FireBase
     private fun dbConnect(){
 
         // Write a message to the database
@@ -75,22 +75,6 @@ class EvenementListActivity : AppCompatActivity() {
         myRef.setValue("Hello, World!")
 
         myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue(String::class.java)
-                Log.d("xxVALxx", "Value is: " + value!!)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("xxFAILVALxx", "Failed to read value.", error.toException())
-            }
-        })
-        val myEvents = database.getReference("evenements")
-        myEvents.setValue("Hello, World!")
-
-        myEvents.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.

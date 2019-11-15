@@ -60,11 +60,11 @@ class MainActivity : MenuActivity() {
         }
     }
 
-    //fonction connexion
+    //fonction de connexion de firebase utilisant l'email et le mot de passe
     fun signIn(view: View,email: String, password: String){
         fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
             if(task.isSuccessful){
-                toast("Authentification réussie!")
+                toast("Authentification réussie")
                 var intent = Intent(this, EvenementListActivity::class.java)
                 intent.putExtra("id", fbAuth.currentUser?.email)
                 startActivity(intent)

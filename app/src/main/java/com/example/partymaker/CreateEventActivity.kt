@@ -37,7 +37,7 @@ class CreateEventActivity : AppCompatActivity() {
         //NTUE
 
         if(checkNewEventValues(newEventName, newEventDescription, newEventDate)){
-            val newEvent = EvenementsModel("3", newEventDescription, newEventName, newEventDate, ArrayList<String>())
+            val newEvent = EvenementsModel("3", newEventName, newEventDate, newEventDescription, ArrayList<String>())
             DummyContent.addItem(newEvent)
 
             //create event in BDD

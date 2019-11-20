@@ -12,6 +12,9 @@
         android:roundIcon="@drawable/logo_party_maker"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity android:name=".CreateEventActivity"
             android:label="@string/title_create_event" >
 
@@ -33,7 +36,8 @@
                 android:value="com.example.partymaker.EvenementListActivity" />
         </activity>
         <activity android:name=".InscriptionActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

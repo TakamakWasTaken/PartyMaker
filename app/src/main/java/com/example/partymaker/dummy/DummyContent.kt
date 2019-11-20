@@ -39,7 +39,7 @@ object DummyContent {
         membres2.add("Personne 1")
         membres2.add("Personne 2")
         membres2.add("P3")
-        addItem(createDummyItem("2", "Crémaillère", "02/06/2020", "L'emménagement de Louis et Mat' est terminé", membres2))
+        addItem(createDummyItem("2", "Crémaillère", "02/06/2020", "L'emménagement de Louis et Mat' est terminé, célèbront ça :)", membres2))
     }
 
     fun addItem(item: EvenementsModel) {

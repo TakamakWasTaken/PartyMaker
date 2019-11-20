@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.media.app.NotificationCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.example.partymaker.Models.EvenementsModel
 import com.example.partymaker.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_evenement_detail.*
@@ -56,6 +57,19 @@ class EvenementDetailFragment : Fragment() {
                 rootView.evenement_member3.text = it.participants[2]
             }
         }
+        var builder = NotificationCompat.Builder(activity!!.applicationContext, "1")
+            .setSmallIcon(R.drawable.fui_ic_mail_white_24dp)
+            .setContentTitle("Title")
+            .setContentText("Content")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        rootView.button_reminder.setOnClickListener(){
+            with(NotificationManagerCompat.from(activity!!.applicationContext)) {
+                notify(2, builder.build())
+            }
+        }
+
+
         return rootView
     }
 

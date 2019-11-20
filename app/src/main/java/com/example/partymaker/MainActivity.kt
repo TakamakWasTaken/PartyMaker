@@ -1,5 +1,8 @@
 package com.example.partymaker
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +14,7 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
@@ -99,6 +103,25 @@ class MainActivity : MenuActivity() {
 
         return connect
     }
+
+    //création de canal pour les notifications
+    private fun createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Notifications"
+            val descriptionText = "Canal Test description "
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("1", name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
 
     //Fonction de vérification automatique de la validité de l'email.
     private fun isEmailValid(email: CharSequence): Boolean {
